@@ -6,34 +6,6 @@ import { useDataQuery } from '@dhis2/app-runtime'
 import CardHome from './components/CardHome.js'
 import Home from './pages/Home.js'
 
-import {
-    Table,
-    DataTable,
-    DataTableRow,
-    TableBody,
-    TableCell,
-    TableCellHead,
-    TableFoot,
-    TableHead,
-    TableRow,
-    TableRowHead,
-    DataTableColumnHeader,
-    DataTableCell,
-    Modal,
-    ModalTitle,
-    Button,
-    ButtonStrip,
-    ModalActions,
-    ModalContent,
-    Box,
-    Card,
-} from '@dhis2/ui'
-
-
-
-
-
-
 const dataQuery = {
     me: {
         resource: 'me',
