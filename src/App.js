@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { DataQuery } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
 import classes from './App.module.css'
 import { useDataQuery } from '@dhis2/app-runtime'
 import CardHome from './components/CardHome.js'
+import Home from './pages/Home.js'
+
 import {
     Table,
     DataTable,
@@ -56,26 +58,29 @@ const dataQuery = {
     },
 }
 
-const MyApp = () => (
-    <div className={classes.container}>
-        <DataQuery query={dataQuery}>
-            {({ error, loading, data }) => {
-                if (error) return <span>ERROR</span>
-                if (loading) return <span>...</span>
-                return (
-                   
 
-                    <>
-                     <br/>
-                    <br/>
-                        <CardHome title={"User app"} pButton="Manage Users" description={"Navigate to users app, change and give permissions"}/>
 
-                    </>
-                )
-            }}
-        </DataQuery>
-    </div>
-)
+function MyApp() {
+    //Always start with homepage. 
+    const [currentPage, setCurrentPage] = useState("Home")
+
+    return (
+        <div className={classes.container}>
+            <DataQuery query={dataQuery}>
+                {({ error, loading, data }) => {
+                    if (error) return <span>ERROR</span>
+                    if (loading) return <span>...</span>
+                    return (
+                        <>
+                        <Home/>
+                            {/* <CardHome title={"User app"} pButton="Manage Users" description={"Navigate to users app, change and give permissions"} /> */}
+                        </>
+                    )
+                }}
+            </DataQuery>
+        </div>
+    )
+}
 
 
 export default MyApp

@@ -29,24 +29,19 @@ import classes from "./CardHome.module.css"
 export default function CardHome({ title, description = "default", pButton = "Primary action" }) {
     return (
         <div>
-            <Box height="200px" width="358px">
+            <Box height="200px" width="358px"> {/*needed to sellect size.*/}
                 <Card >
                     <div className={classes.main}>
                         <div>
-
                             <strong className={classes.title}> {title} </strong>
-
-
                             <p>{description}</p>
                         </div>
-
                         <div className={classes.goBottomRight}>
                             <ButtonStrip>
-                                <Button primary>{pButton}</Button>
+                                <Button primary>{pButton}</Button> {/*add onClick here*/}
                             </ButtonStrip>
                         </div>
                     </div>
-
                 </Card>
             </Box>
         </div>
