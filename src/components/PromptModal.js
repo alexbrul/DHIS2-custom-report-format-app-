@@ -1,12 +1,20 @@
-import { Modal, Button} from '@dhis2/ui'
+import { Modal, Button} from '@dhis2/ui';
+import classes from '../styleSheets/modal.modules.css';
 
 const PromptModal = ({target, click}) =>{
     return(
-        <Modal>
+        <Modal className={classes.modal}>
             Hello this is a modal containing info on {target}
-            <Button primary onClick ={()=>{
-                click(false)
-            }}>Close me</Button>
+            <br/> <br/> <br/>
+            <div className={classes.buttons}>
+                <Button onClick ={()=>{
+                    click(false)
+                }}>Close</Button>
+
+                <Button primary onClick ={()=>{
+                    click('Report Builder')
+                }}>Create</Button>
+            </div>
         </Modal>
     )
 }

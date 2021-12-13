@@ -5,6 +5,7 @@ import classes from './App.module.css'
 import { useDataQuery } from '@dhis2/app-runtime'
 import CardHome from './components/CardHome.js'
 import Home from './pages/Home.js'
+import ReportBuilder from './pages/ReportBuilder'
 
 const dataQuery = {
     me: {
@@ -48,7 +49,8 @@ function MyApp() {
                     if (loading) return <span>...</span>
                     return (
                         <>
-                        {activePage === 'Home' && <Home ActivePageHandler={activePageHandler}/>}
+                        {activePage === 'Home' && <Home activePage={activePageHandler}/>}
+                        {activePage === 'Report Builder' && <ReportBuilder activePage={activePageHandler}/>}
                         </>
                     )
                 }}

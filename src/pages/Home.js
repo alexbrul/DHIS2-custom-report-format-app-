@@ -2,12 +2,15 @@ import React, {useState} from 'react'
 import CardHome from '../components/CardHome'
 import PromptModal from '../components/PromptModal'
 import classes from '../styleSheets/home.module.css'
-import {Modal} from '@dhis2/ui'
 
-export default function Home() {
+export default function Home({activePage}) {
     const [modal, setModal] = useState(false)
-    
+    //const [page, setPage] = useState('Home')
+
     function handleClick(e){
+        if(e === 'Report Builder'){
+            activePage(e)
+        }
         setModal(e)
     }
     return (
