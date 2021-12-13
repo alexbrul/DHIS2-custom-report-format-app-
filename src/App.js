@@ -62,7 +62,7 @@ const dataQuery = {
 
 function MyApp() {
     //Always start with homepage. 
-    const [currentPage, setCurrentPage] = useState("Home")
+    const [activePage, setActivePage] = useState("Home")
 
     return (
         <div className={classes.container}>
@@ -72,8 +72,7 @@ function MyApp() {
                     if (loading) return <span>...</span>
                     return (
                         <>
-                        <Home/>
-                            {/* <CardHome title={"User app"} pButton="Manage Users" description={"Navigate to users app, change and give permissions"} /> */}
+                        {activePage === 'Home' && <Home setActivePage={setActivePage}/>}
                         </>
                     )
                 }}
