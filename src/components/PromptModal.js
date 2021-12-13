@@ -1,8 +1,13 @@
-import { Modal } from '@dhis2/ui'
+import { Modal, Button} from '@dhis2/ui'
 
-const PromptModal = () =>{
+const PromptModal = ({target, click}) =>{
     return(
-        <Modal></Modal>
+        <Modal>
+            Hello this is a modal containing info on {target}
+            <Button primary onClick ={()=>{
+                click(false)
+            }}>Close me</Button>
+        </Modal>
     )
 }
 
