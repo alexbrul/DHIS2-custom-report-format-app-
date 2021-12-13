@@ -64,6 +64,10 @@ function MyApp() {
     //Always start with homepage. 
     const [activePage, setActivePage] = useState("Home")
 
+    function activePageHandler(page){
+        setActivePage(page);
+    }
+
     return (
         <div className={classes.container}>
             <DataQuery query={dataQuery}>
@@ -72,7 +76,7 @@ function MyApp() {
                     if (loading) return <span>...</span>
                     return (
                         <>
-                        {activePage === 'Home' && <Home setActivePage={setActivePage}/>}
+                        {activePage === 'Home' && <Home ActivePageHandler={activePageHandler}/>}
                         </>
                     )
                 }}
