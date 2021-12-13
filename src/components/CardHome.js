@@ -27,6 +27,8 @@ import classes from "./CardHome.module.css"
 
 //Card needs implementation of onClick for the buttons. 
 export default function CardHome({ title, description = "default", pButton = "Primary action" }) {
+
+    
     return (
         <div>
             <Box height="200px" width="358px"> {/*needed to sellect size.*/}
