@@ -15,7 +15,7 @@ export default function Home({activePage}) {
     }
 
     function userNav(){
-        window.open(URL, 'https://verify.dhis2.org/in5320/dhis-web-user/index.html#/users');
+        window.open(URL, 'http://localhost:3000/');
     }
 
     return (

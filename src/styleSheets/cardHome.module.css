@@ -5,14 +5,13 @@
 
 .goBottomRight {
   position: absolute;
-  bottom: 8px;
-  right: 16px;
-  font-size: 18px;
+  bottom: 16px;
+  left: 16px;
 }
 
 .title {
   width: 100%;
-  font-size: 24px;
+  font-size: 26px;
   font-family: "HelveticaNeue-Thin";
 }
 
@@ -20,6 +19,21 @@
   font-size: 14px;
 }
 
-.card {
- 
+.button {
+  width: 100px;
+  height: 40px;
+  border: none;
+  font-size: 18px;
+  font-family: "HelveticaNeue-Thin";
+  color: #2196f3;
+  background-color: #ffffff;
+  text-align: start;
+}
+
+.button:hover {
+  border: solid #4db6ac 1px;
+  border-radius: 15px;
+  background-color: #4db6ac;
+  color: rgb(73, 73, 73);
+  text-align: center;
 }

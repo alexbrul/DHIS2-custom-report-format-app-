@@ -13,7 +13,7 @@ export default function CardHome({ title, description, pButton, click}) {
     return (
         <div>
             <Box height="200px" width="358px"> {/*needed to select size.*/}
-                <Card className={classes.card}>
+                <Card >
                     <div className={classes.main}>
                         <div>
                             <p className={classes.title}> {title} </p>
@@ -21,9 +21,9 @@ export default function CardHome({ title, description, pButton, click}) {
                         </div>
                         <div className={classes.goBottomRight}>
                             <ButtonStrip>
-                                <Button primary onClick = {()=>{
+                                <button className={classes.button} onClick = {()=>{
                                     {click(pButton)}}}> {pButton}
-                                </Button>
+                                </button>
                             </ButtonStrip>
                         </div>
                     </div>
