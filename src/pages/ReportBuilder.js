@@ -5,6 +5,11 @@ import DatasetSelector from '../components/reportBuilder/DatasetSelector'
 import DatasetPreview from '../components/reportBuilder/DatasetPreview'
 
 const ReportBuilder = ({ activePage, reportName }) => {
+
+    //DatasetPicker
+    const initiallySelected = [];
+    const [selected, setSelected] = useState(initiallySelected)
+
     return (
         <div>
             <div className={classes.topColumn}>
@@ -15,10 +20,13 @@ const ReportBuilder = ({ activePage, reportName }) => {
             </div>
             <div className={classes.mainArea}>
                 <div className={classes.mainAreaLeft}>
-                    <DatasetSelector />
+                    <DatasetSelector selected={selected} setSelected={setSelected} 
+                    initiallySelected={initiallySelected} /> {/* {should be a copy of options} */}
                 </div>
                 <div className={classes.mainAreaRight}>
-                    <DatasetPreview/>
+                    <DatasetPreview>
+                        <h1>barn av regnbuen</h1>
+                        </DatasetPreview>
                 </div>
             </div>
 
