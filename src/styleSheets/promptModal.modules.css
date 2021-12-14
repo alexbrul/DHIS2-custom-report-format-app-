@@ -1,0 +1,5 @@
+.reportIcon {
+  display: flex;
+  flex-direction: row;
+  margin: 100px;
+}
