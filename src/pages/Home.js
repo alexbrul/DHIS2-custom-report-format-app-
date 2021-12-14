@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import CardHome from '../components/CardHome'
 import PromptModal from '../components/PromptModal'
 import classes from '../styleSheets/home.module.css'
+import DatasetPreview from '../components/reportBuilder/DatasetPreview'
 
 export default function Home({activePage}) {
     const [modal, setModal] = useState(false)
