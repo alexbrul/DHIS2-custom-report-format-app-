@@ -1,0 +1,36 @@
+.container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    margin-top: 20px;
+    margin-left: 20px;
+  }
+
+  .topColumn {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      height: 10vh;
+      width: 100%;
+      background-color: blueviolet;
+      padding: 20px; /* warning: padding on sub header. */
+  }
+  
+  .mainArea {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      height: 100%;
+  }
+
+  .mainAreaLeft {
+      width: 50%;
+  }
+  .mainAreaRight {
+    width: 50%;
+}
+
+
+
