@@ -13,11 +13,11 @@ export default function CardHome({ title, description, pButton, click}) {
     return (
         <div>
             <Box height="200px" width="358px"> {/*needed to select size.*/}
-                <Card >
+                <Card className={classes.card}>
                     <div className={classes.main}>
                         <div>
-                            <strong className={classes.title}> {title} </strong>
-                            <p>{description}</p>
+                            <p className={classes.title}> {title} </p>
+                            <p className={classes.paragraphText}>{description}</p>
                         </div>
                         <div className={classes.goBottomRight}>
                             <ButtonStrip>

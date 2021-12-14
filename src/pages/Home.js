@@ -13,10 +13,15 @@ export default function Home({activePage}) {
         }
         setModal(e)
     }
+
+    function userNav(){
+        window.open(URL, 'https://verify.dhis2.org/in5320/dhis-web-user/index.html#/users');
+    }
+
     return (
         <div className={classes.container}>
             <div className={classes.gridcontainer}>
-                <CardHome title={"User app"} pButton="Manage" description={"Navigate to users app, change and give permissions"} click = {handleClick}/>
+                <CardHome title={"User app"} pButton="Manage" description={"Navigate to users app, change and give permissions"} click = {userNav}/>
                 <CardHome title={"Generate Report"} pButton="Build" description={"Build a new report using a configured format"} click = {handleClick}/>
                 <CardHome title={"Edit Report Format"} pButton="Edit" description={"Edit an existing report format"} click = {handleClick}/>
             </div>
