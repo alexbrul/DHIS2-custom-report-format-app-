@@ -8,12 +8,10 @@ export default function DatasetSelector({ selected, setSelected, optionstmp }) {
 
 
     const onChange = (payload) => {
-        setSelected(payload.selected)
-        console.log(selected) //delayed but works.
-        console.log("payload", payload); 
+        setSelected(payload.selected); 
     }
 
-    //has to be passed down. 
+    //has to be passed down later. 
     const [options, setOptions] = useState([
         {
             value: 'XesKc0UNEKj',
