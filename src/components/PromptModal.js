@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import { Modal, Button} from '@dhis2/ui';
 import AssignmentIcon from '@mui/icons-material/AssignmentOutlined';
 import classes from '../styleSheets/promptModal.module.css';
-import { width } from '@mui/system';
 
 const PromptModal = ({target, openPage}) =>{
     const [displayState, setDisplayState] = useState({formatOne: 'black', formatTwo: 'black', formatThree: 'black'})

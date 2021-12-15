@@ -1,9 +1,6 @@
 import React, { useState } from 'react'
 import { DataQuery } from '@dhis2/app-runtime'
-import i18n from '@dhis2/d2-i18n'
 import classes from './App.module.css'
-import { useDataQuery } from '@dhis2/app-runtime'
-import CardHome from './components/CardHome.js'
 import Home from './pages/Home.js'
 import ReportBuilder from './pages/ReportBuilder'
 
@@ -22,7 +19,9 @@ function MyApp() {
 
     function activePageHandler(page, format){
         setActivePage(page);
-        setFormat(format)
+        if(format === 'f1'){
+            setFormat('Format 1')
+        }
     }
 
     return (
