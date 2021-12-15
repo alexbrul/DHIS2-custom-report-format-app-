@@ -3,12 +3,14 @@ import { Button, Transfer } from '@dhis2/ui'
 import classes from '../styleSheets/reportBuilder.module.css'
 import DatasetSelector from '../components/reportBuilder/DatasetSelector'
 import DatasetPreview from '../components/reportBuilder/DatasetPreview'
+import OrganisationUnitPicker from '../components/reportBuilder/OrganisationUnitPicker'
 
 const ReportBuilder = ({ activePage, format }) => {
 
     //DatasetPicker
     const initiallySelected = [];
     const [selected, setSelected] = useState(initiallySelected)
+    const [selectedOrgUnits, setSelectedOrgUnits] = useState([]);
 
     return (
         <div>
@@ -22,6 +24,8 @@ const ReportBuilder = ({ activePage, format }) => {
                 <div className={classes.mainAreaLeft}>
                     <DatasetSelector selected={selected} setSelected={setSelected} 
                     initiallySelected={initiallySelected} /> {/* {should be a copy of options} */}
+                    <OrganisationUnitPicker selectedOrgUnits={selectedOrgUnits}
+    setSelectedOrgUnits={setSelectedOrgUnits}/>
                 </div>
                 <div className={classes.mainAreaRight}>
                     <DatasetPreview>
