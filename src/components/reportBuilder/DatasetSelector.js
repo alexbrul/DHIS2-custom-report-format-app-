@@ -4,6 +4,7 @@ import { Button, Transfer, TransferOption } from '@dhis2/ui'
 export default function DatasetSelector({ selected, setSelected, optionstmp }) {
 
     const [highL, setHighL] = useState([]);
+    const HEIGHT_SELECTOR = "40vh"
 
 
 
@@ -58,7 +59,7 @@ export default function DatasetSelector({ selected, setSelected, optionstmp }) {
                 leftHeader={<h5>Available Datasets</h5>}
                 rightHeader={<h5>Selected Datasets</h5>}
                 onChange={onChange}
-                height="70vh"
+                height={HEIGHT_SELECTOR}
                 options={options}
                 selected={selected}
             />
