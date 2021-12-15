@@ -9,7 +9,7 @@ import {
     DataTableColumnHeader,
 } from '@dhis2/ui'
 
-const TableBuilder = () =>{
+const TableBuilder = (props) =>{
     return (
         <DataTable>
             <TableHead>
@@ -31,44 +31,6 @@ const TableBuilder = () =>{
             <TableBody>
                 <DataTableRow>
                     <DataTableCell>
-                        Onyekachukwu
-                    </DataTableCell>
-                    <DataTableCell>
-                        Kariuki
-                    </DataTableCell>
-                    <DataTableCell>
-                        02/06/2007
-                    </DataTableCell>
-                    <DataTableCell>
-                        05/25/1972
-                    </DataTableCell>
-                </DataTableRow>
-                <DataTableRow>
-                    <DataTableCell>
-                        Kwasi
-                    </DataTableCell>
-                    <DataTableCell>
-                        Okafor
-                    </DataTableCell>
-                    <DataTableCell>
-                        08/11/2010
-                    </DataTableCell>
-                    <DataTableCell>
-                        02/26/1991
-                    </DataTableCell>
-                </DataTableRow>
-                <DataTableRow>
-                    <DataTableCell>
-                        Siyabonga
-                    </DataTableCell>
-                    <DataTableCell>
-                        Abiodun
-                    </DataTableCell>
-                    <DataTableCell>
-                        07/21/1981
-                    </DataTableCell>
-                    <DataTableCell>
-                        02/06/2007
                     </DataTableCell>
                 </DataTableRow>
             </TableBody>
