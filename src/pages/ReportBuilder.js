@@ -4,7 +4,7 @@ import classes from '../styleSheets/reportBuilder.module.css'
 import DatasetSelector from '../components/reportBuilder/DatasetSelector'
 import DatasetPreview from '../components/reportBuilder/DatasetPreview'
 
-const ReportBuilder = ({ activePage, reportName }) => {
+const ReportBuilder = ({ activePage, format }) => {
 
     //DatasetPicker
     const initiallySelected = [];
@@ -14,7 +14,7 @@ const ReportBuilder = ({ activePage, reportName }) => {
         <div>
             <div className={classes.topColumn}>
                 <Button onClick={() => { activePage('Home') }}> Back Home</Button>
-                    <p>Report Builder</p>
+                    <p>{format}</p>
                 <Button>Generate report</Button>
 
             </div>

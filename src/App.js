@@ -34,7 +34,8 @@ function MyApp() {
                     return (
                         <>
                         {activePage === 'Home' && <Home activePage={activePageHandler}/>}
-                        {activePage === 'Build' && <ReportBuilder activePage={activePageHandler}/>}
+                        {activePage === 'Edit' && <Home activePage={activePageHandler}/>}
+                        {activePage === 'Generate' && <ReportBuilder activePage={activePageHandler} format={format}/>}
                         </>
                     )
                 }}

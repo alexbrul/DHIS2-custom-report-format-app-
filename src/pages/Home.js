@@ -10,10 +10,11 @@ export default function Home({activePage}) {
     function handleClick(page, format){
         if(page === 'Manage'){
             window.open(URL, 'http://localhost:3000/');
-        } else{
+        } else if (format){
+            activePage(page, format)
+        } else {
             setModal(page)
         }
-        //activePage(page, format)
     }
 
     return (

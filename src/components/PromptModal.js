@@ -2,10 +2,11 @@ import React, {useState} from 'react';
 import { Modal, Button} from '@dhis2/ui';
 import AssignmentIcon from '@mui/icons-material/AssignmentOutlined';
 import classes from '../styleSheets/promptModal.module.css';
+import { width } from '@mui/system';
 
 const PromptModal = ({target, openPage}) =>{
     const [displayState, setDisplayState] = useState({formatOne: 'black', formatTwo: 'black', formatThree: 'black'})
-    const [formatToggle, setFormatToggle] = useState('f1')
+    const [formatToggle, setFormatToggle] = useState()
     
     function handleFormat(key){
         if(key === 'f1'){
@@ -57,10 +58,11 @@ const PromptModal = ({target, openPage}) =>{
                 <Button onClick ={()=>{
                     openPage(false)
                 }}>Close</Button>
-
+                <div></div>
                 <Button primary onClick ={()=>{
-                    openPage(formatToggle)
-                }}>Create</Button>
+                    openPage(target, formatToggle)
+                    console.log(target, formatToggle);
+                }}>{target}</Button>
             </div>
         </Modal>
     )
