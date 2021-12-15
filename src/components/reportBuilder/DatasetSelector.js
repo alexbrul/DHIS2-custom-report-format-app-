@@ -1,12 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button, Transfer, TransferOption } from '@dhis2/ui'
 
 export default function DatasetSelector({ selected, setSelected, optionstmp }) {
 
+    const [highL, setHighL] = useState([]);
+
+
 
     const onChange = (payload) => {
         setSelected(payload.selected)
-        console.log(selected) //delayed but works. 
+        console.log(selected) //delayed but works.
+        console.log("payload", payload); 
     }
 
     //has to be passed down. 
@@ -30,11 +34,27 @@ export default function DatasetSelector({ selected, setSelected, optionstmp }) {
 
     ])
 
+    const betterOption = (props) => {
+        const { label, value, onClick, highlighted, selected } = props
+        // do something if this highlighted
+
+        const customOnClick = (...args) => {
+            if (!highlighted) {
+                setHighL([label, value])
+            }else{
+                setHighL([])
+            }
+            onClick(...args)
+        }
+        return <TransferOption {...props} onClick={customOnClick} />
+    }
+
 
     return (
         <div>
 
             <Transfer
+                renderOption={betterOption}
                 filterable
                 enableOrderChange
                 leftHeader={<h5>Available Datasets</h5>}
@@ -44,6 +64,8 @@ export default function DatasetSelector({ selected, setSelected, optionstmp }) {
                 options={options}
                 selected={selected}
             />
+            <p>test {highL}</p>
+
 
         </div>
     )
