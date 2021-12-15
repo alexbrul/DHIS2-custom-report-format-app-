@@ -6,27 +6,24 @@ import DatasetPreview from '../components/reportBuilder/DatasetPreview'
 
 export default function Home({activePage}) {
     const [modal, setModal] = useState(false)
-    //const [page, setPage] = useState('Home')
 
-    function handleClick(e){
-        if(e === 'Report Builder'){
-            activePage(e)
+    function handleClick(page, format){
+        if(page === 'Manage'){
+            window.open(URL, 'http://localhost:3000/');
+        } else{
+            setModal(page)
         }
-        setModal(e)
-    }
-
-    function userNav(){
-        window.open(URL, 'http://localhost:3000/');
+        //activePage(page, format)
     }
 
     return (
         <div className={classes.container}>
             <div className={classes.gridcontainer}>
-                <CardHome title={"User app"} pButton="Manage" description={"Navigate to users app, change and give permissions"} click = {userNav}/>
-                <CardHome title={"Generate Report"} pButton="Build" description={"Build a new report using a configured format"} click = {handleClick}/>
-                <CardHome title={"Edit Report Format"} pButton="Edit" description={"Edit an existing report format"} click = {handleClick}/>
+                <CardHome title={"User app"} pButton="Manage" description={"Navigate to users app, change and give permissions"} selectModal= {handleClick}/>
+                <CardHome title={"Generate Report"} pButton="Generate" description={"Build a new report using a configured format"} selectModal= {handleClick}/>
+                <CardHome title={"Edit Report Format"} pButton="Edit" description={"Edit an existing report format"} selectModal= {handleClick}/>
             </div>
-            {modal && <PromptModal target = {modal} click = {handleClick}/>}
+            {modal && <PromptModal target={modal} openPage={handleClick}/>}
         </div>
     )
 }

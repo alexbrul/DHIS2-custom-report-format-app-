@@ -9,7 +9,7 @@ const ReportBuilder = ({ activePage, reportName }) => {
         <div>
             <div className={classes.topColumn}>
                 <Button onClick={() => { activePage('Home') }}> Back Home</Button>
-                <p>Report Builder</p>
+                    <p>Report Builder</p>
                 <Button>Generate report</Button>
 
             </div>

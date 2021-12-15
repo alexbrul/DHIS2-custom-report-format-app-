@@ -3,8 +3,9 @@ import { Modal, Button} from '@dhis2/ui';
 import AssignmentIcon from '@mui/icons-material/AssignmentOutlined';
 import classes from '../styleSheets/promptModal.module.css';
 
-const PromptModal = ({target, click}) =>{
+const PromptModal = ({target, openPage}) =>{
     const [displayState, setDisplayState] = useState({formatOne: 'black', formatTwo: 'black', formatThree: 'black'})
+    const [formatToggle, setFormatToggle] = useState('f1')
     
     function handleFormat(key){
         if(key === 'f1'){
@@ -14,11 +15,13 @@ const PromptModal = ({target, click}) =>{
         } else{
             setDisplayState({formatOne: 'black', formatTwo: 'black', formatThree: '#4db6ac'})
         }
-        console.log(displayState);
+        setFormatToggle(key)
+        console.log(key);
     }
 
-    return(
-        <Modal className={classes.modal}>
+    const StandardModal = (action) =>{
+        return(
+            <>
             <p className={classes.title}> Select Format to {target} </p>
             <div className={classes.iconBox} style={{color: displayState.formatOne}}>
                 <div className={classes.reportSelect}>
@@ -43,13 +46,20 @@ const PromptModal = ({target, click}) =>{
                     <p className={classes.iconText}>Format 3</p>
                 </div>
             </div>
+            </>
+        )
+    }
+
+    return(
+        <Modal className={classes.modal}>
+            <StandardModal/>
             <div className={classes.buttons}>
                 <Button onClick ={()=>{
-                    click(false)
+                    openPage(false)
                 }}>Close</Button>
 
                 <Button primary onClick ={()=>{
-                    click('Report Builder')
+                    openPage(formatToggle)
                 }}>Create</Button>
             </div>
         </Modal>

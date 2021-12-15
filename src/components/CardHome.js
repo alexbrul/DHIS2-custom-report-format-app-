@@ -9,7 +9,7 @@ import classes from "../styleSheets/cardHome.module.css"
 
 
 //Card needs implementation of onClick for the buttons. 
-export default function CardHome({ title, description, pButton, click}) {
+export default function CardHome({ title, description, pButton, selectModal}) {
     return (
         <div>
             <Box height="200px" width="358px"> {/*needed to select size.*/}
@@ -22,7 +22,7 @@ export default function CardHome({ title, description, pButton, click}) {
                         <div className={classes.goBottomRight}>
                             <ButtonStrip>
                                 <button className={classes.button} onClick = {()=>{
-                                    {click(pButton)}}}> {pButton}
+                                    {selectModal(pButton)}}}> {pButton}
                                 </button>
                             </ButtonStrip>
                         </div>

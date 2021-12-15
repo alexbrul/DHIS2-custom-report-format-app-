@@ -18,9 +18,11 @@ const dataQuery = {
 function MyApp() {
     //Always start with homepage. 
     const [activePage, setActivePage] = useState("Home")
+    const [format, setFormat] = useState()
 
-    function activePageHandler(page){
+    function activePageHandler(page, format){
         setActivePage(page);
+        setFormat(format)
     }
 
     return (
@@ -32,7 +34,7 @@ function MyApp() {
                     return (
                         <>
                         {activePage === 'Home' && <Home activePage={activePageHandler}/>}
-                        {activePage === 'Report Builder' && <ReportBuilder activePage={activePageHandler}/>}
+                        {activePage === 'Build' && <ReportBuilder activePage={activePageHandler}/>}
                         </>
                     )
                 }}
