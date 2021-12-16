@@ -93,13 +93,9 @@ const DatasetSelector = (props) =>{
         // do something if this highlighted
 
         const customOnClick = (...args) => {
-
-            if (!highlighted) {
-                setHighlighted(value)
-            }else{
-                setHighlighted([])
-            }
+            setHighlighted(value)
             onClick(...args)
+            
 
         }
         return <TransferOption {...props} onClick={customOnClick} />

@@ -12,7 +12,7 @@ const ReportBuilder = ({ activePage, format }) => {
     //const [selectedOrgUnits, setSelectedOrgUnits] = useState([]);
     const initiallySelected = [];
     const [selected, setSelected] = useState(["empty"])
-    const [highLighted, setHighlighted] = useState([])
+    const [highlighted, setHighlighted] = useState([])
 
 
 
@@ -38,11 +38,16 @@ const ReportBuilder = ({ activePage, format }) => {
         if (loading) return <CircularLoader small />
         if (error) return <p>Oops! Something went wrong.</p>
         if (data) { document.MyFrame.document.body.innerHTML = data.dataSetReport }
+
     }
     useEffect(() => {
-        loadDataSetReport(highLighted) 
-        console.log(highLighted);
-    }, [highLighted])
+        loadDataSetReport(highlighted) 
+        console.log("useeffect highlighted: ", highlighted);
+    }, [highlighted])
+
+    useEffect(() => {
+        if (data) { document.MyFrame.document.body.innerHTML = data.dataSetReport }
+    }, [data])
 
     return (
         <div>
