@@ -33,7 +33,7 @@ const ReportBuilder = ({ activePage, format }) => {
                 <div className={classes.mainAreaRight}>
                     <DatasetPreview>
                         <h1>barn av regnbuen</h1>
-                        </DatasetPreview>
+                    </DatasetPreview>
                 </div>
             </div>
 

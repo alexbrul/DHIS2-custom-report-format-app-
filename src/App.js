@@ -1,16 +1,18 @@
 import React, { useState } from 'react'
-import {useDataQuery } from '@dhis2/app-runtime'
+import {useDataQuery} from '@dhis2/app-runtime'
+import { CircularLoader } from '@dhis2/ui'
 import classes from './App.module.css'
 import Home from './pages/Home.js'
 import ReportBuilder from './pages/ReportBuilder'
 
 const testQuery = {
     dataSetReport: {
-        resource: 'dataSetReport',
+        resource: 'dataSetReport/custom',
         params: ({ ds, pe, ou}) => ({
             ds: ds,
             pe: pe,
             ou: ou,
+            format: 'html'
         })
     }
 }
@@ -24,7 +26,7 @@ function MyApp() {
         refetch({ds: 'mZ7EalOemj2', ou: 'nBLRIqKNNOu', pe: '2020' })
         if (loading) return <CircularLoader small />
         if (error) return <p>Oops! Something went wrong.</p>
-        if (data) return console.log(data.dataSetReport);
+        if (data) {document.MyFrame.document.body.innerHTML = data.dataSetReport}
     }
 
     //Always start with homepage. 
@@ -44,6 +46,7 @@ function MyApp() {
             {activePage === 'Edit' && <Home activePage={activePageHandler}/>}
             {activePage === 'Generate' && <ReportBuilder activePage={activePageHandler} format={format}/>}
             <button onClick={() =>{loadDataSetReport()}}>Fetch Me Some Data</button>
+            <iframe name="MyFrame"></iframe>
         </div>
     )
 }
