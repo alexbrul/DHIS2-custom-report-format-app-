@@ -25,8 +25,10 @@ const ReportBuilder = ({ activePage, format }) => {
                     {console.log("logging selected: ", selected)}
                     <DatasetSelector selected={selected} setSelected={setSelected} 
                     initiallySelected={initiallySelected} /> {/* {should be a copy of options} */}
-                    <OrganisationUnitPicker selectedOrgUnits={selectedOrgUnits}
-    setSelectedOrgUnits={setSelectedOrgUnits}/>
+                    {/* {<OrganisationUnitPicker 
+                        selectedOrgUnits={selectedOrgUnits}
+                        setSelectedOrgUnits={setSelectedOrgUnits}
+                    />} */}
                 </div>
                 <div className={classes.mainAreaRight}>
                     <DatasetPreview>

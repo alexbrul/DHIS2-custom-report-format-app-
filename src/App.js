@@ -1,18 +1,30 @@
 import React, { useState } from 'react'
-import { DataQuery } from '@dhis2/app-runtime'
+import {useDataQuery } from '@dhis2/app-runtime'
 import classes from './App.module.css'
 import Home from './pages/Home.js'
 import ReportBuilder from './pages/ReportBuilder'
 
-const dataQuery = {
-    me: {
-        resource: 'me',
+const testQuery = {
+    dataSetReport: {
+        resource: 'dataSetReport',
+        params: ({ ds, pe, ou}) => ({
+            ds: ds,
+            pe: pe,
+            ou: ou,
+        })
     }
 }
 
-
-
 function MyApp() {
+    const {data, refetch, error, loading} = useDataQuery(testQuery, {
+        lazy: true,
+    })
+
+    const loadDataSetReport = () => {
+        refetch({ds: 'mZ7EalOemj2', ou: 'nBLRIqKNNOu', pe: '2020' })
+        console.log(data.dataSetReport);
+    }
+
     //Always start with homepage. 
     const [activePage, setActivePage] = useState("Home")
     const [format, setFormat] = useState()
@@ -26,19 +38,10 @@ function MyApp() {
 
     return (
         <div className={classes.container}>
-            <DataQuery query={dataQuery}>
-                {({ error, loading, data }) => {
-                    if (error) return <span>ERROR</span>
-                    if (loading) return <span>...</span>
-                    return (
-                        <>
-                       {activePage === 'Home' && <Home activePage={activePageHandler}/>}
-                        {activePage === 'Edit' && <Home activePage={activePageHandler}/>}
-                        {activePage === 'Generate' && <ReportBuilder activePage={activePageHandler} format={format}/>}
-                        </>
-                    )
-                }}
-            </DataQuery>
+            {activePage === 'Home' && <Home activePage={activePageHandler}/>}
+            {activePage === 'Edit' && <Home activePage={activePageHandler}/>}
+            {activePage === 'Generate' && <ReportBuilder activePage={activePageHandler} format={format}/>}
+            <button onClick={() =>{loadDataSetReport()}}>Fetch Me Some Data</button>
         </div>
     )
 }

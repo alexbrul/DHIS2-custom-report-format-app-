@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Button, Transfer, TransferOption } from '@dhis2/ui'
+import { useDataQuery } from '@dhis2/app-runtime'
+
 
 const DatasetSelector = (props) =>{
 
@@ -9,7 +11,6 @@ const DatasetSelector = (props) =>{
 
     const [highL, setHighL] = useState([]);
     const HEIGHT_SELECTOR = "40vh"
-
 
 
     const onChange = (payload) => {
@@ -101,10 +102,8 @@ const DatasetSelector = (props) =>{
         return <TransferOption {...props} onClick={customOnClick} />
     }
 
-
     return (
         <div>
-
             <Transfer
                 renderOption={betterOption}
                 filterable
@@ -116,7 +115,6 @@ const DatasetSelector = (props) =>{
                 options={options}
                 selected={selected}
             />
-            <p>test {highL}</p>
         </div>
     )
 }
