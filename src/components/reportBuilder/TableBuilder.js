@@ -34,13 +34,6 @@ const TableBuilder = (props) =>{
                     </DataTableCell>
                 </DataTableRow>
             </TableBody>
-            <TableFoot>
-                <DataTableRow>
-                    <DataTableCell colSpan="4">
-                        Footer content
-                    </DataTableCell>
-                </DataTableRow>
-            </TableFoot>
         </DataTable>
     )
 }

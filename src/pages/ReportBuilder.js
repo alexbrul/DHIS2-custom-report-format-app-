@@ -24,8 +24,10 @@ const ReportBuilder = ({ activePage, format }) => {
                 <div className={classes.mainAreaLeft}>
                     <DatasetSelector selected={selected} setSelected={setSelected} 
                     initiallySelected={initiallySelected} /> {/* {should be a copy of options} */}
-                    <OrganisationUnitPicker selectedOrgUnits={selectedOrgUnits}
-    setSelectedOrgUnits={setSelectedOrgUnits}/>
+                    {/* {<OrganisationUnitPicker 
+                        selectedOrgUnits={selectedOrgUnits}
+                        setSelectedOrgUnits={setSelectedOrgUnits}
+                    />} */}
                 </div>
                 <div className={classes.mainAreaRight}>
                     <DatasetPreview>
