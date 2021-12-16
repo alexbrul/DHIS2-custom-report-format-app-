@@ -22,7 +22,9 @@ function MyApp() {
 
     const loadDataSetReport = () => {
         refetch({ds: 'mZ7EalOemj2', ou: 'nBLRIqKNNOu', pe: '2020' })
-        console.log(data.dataSetReport);
+        if (loading) return <CircularLoader small />
+        if (error) return <p>Oops! Something went wrong.</p>
+        if (data) return console.log(data.dataSetReport);
     }
 
     //Always start with homepage. 
