@@ -7,7 +7,7 @@ const DatasetSelector = (props) =>{
 
     console.log("props: ", props)
 
-    const {selected, setSelected, optionstmp} = props
+    const {selected, setSelected, optionstmp, setHighlighted} = props
 
     const [highL, setHighL] = useState([]);
     const HEIGHT_SELECTOR = "40vh"
@@ -94,9 +94,9 @@ const DatasetSelector = (props) =>{
             onClick(...args)
 
             if (highlighted) {
-                setHighL([label, value])
+                setHighlighted([label, value])
             }else{
-                setHighL([])
+                setHighlighted([])
             }
         }
         return <TransferOption {...props} onClick={customOnClick} />

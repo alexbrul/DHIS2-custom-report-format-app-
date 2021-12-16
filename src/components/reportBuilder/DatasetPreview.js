@@ -5,12 +5,12 @@ import TableBuilder from './TableBuilder'
 //pass in dataset component as arg
 export default function datasetPreview(props) {
 
-        //const {dataSet, children} = props 
+        const {children} = props 
     return (
         <div className={classes.main}>
 
             <main>
-                <TableBuilder/>
+                {children}
             </main>
             
         </div>
