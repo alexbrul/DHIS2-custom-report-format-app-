@@ -11,7 +11,7 @@ const ORG_UNIT_QUERY = {
     result: {
         resource: 'organisationUnits',
         params: {
-            level: 1,
+            level: 1, //add option
         },
     },
 }

@@ -32,7 +32,7 @@ function MyApp() {
                     if (loading) return <span>...</span>
                     return (
                         <>
-                        {activePage === 'Home' && <Home activePage={activePageHandler}/>}
+                       {activePage === 'Home' && <Home activePage={activePageHandler}/>}
                         {activePage === 'Edit' && <Home activePage={activePageHandler}/>}
                         {activePage === 'Generate' && <ReportBuilder activePage={activePageHandler} format={format}/>}
                         </>

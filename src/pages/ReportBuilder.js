@@ -9,7 +9,7 @@ const ReportBuilder = ({ activePage, format }) => {
 
     //DatasetPicker
     const initiallySelected = [];
-    const [selected, setSelected] = useState(initiallySelected)
+    const [selected, setSelected] = useState(["empty"])
     const [selectedOrgUnits, setSelectedOrgUnits] = useState([]);
 
     return (
@@ -22,6 +22,7 @@ const ReportBuilder = ({ activePage, format }) => {
             </div>
             <div className={classes.mainArea}>
                 <div className={classes.mainAreaLeft}>
+                    {console.log("logging selected: ", selected)}
                     <DatasetSelector selected={selected} setSelected={setSelected} 
                     initiallySelected={initiallySelected} /> {/* {should be a copy of options} */}
                     <OrganisationUnitPicker selectedOrgUnits={selectedOrgUnits}
