@@ -18,16 +18,7 @@ const testQuery = {
 }
 
 function MyApp() {
-    const {data, refetch, error, loading} = useDataQuery(testQuery, {
-        lazy: true,
-    })
 
-    const loadDataSetReport = () => {
-        refetch({ds: 'mZ7EalOemj2', ou: 'nBLRIqKNNOu', pe: '2020' })
-        if (loading) return <CircularLoader small />
-        if (error) return <p>Oops! Something went wrong.</p>
-        if (data) {document.MyFrame.document.body.innerHTML = data.dataSetReport}
-    }
 
     //Always start with homepage. 
     const [activePage, setActivePage] = useState("Home")
@@ -45,8 +36,6 @@ function MyApp() {
             {activePage === 'Home' && <Home activePage={activePageHandler}/>}
             {activePage === 'Edit' && <Home activePage={activePageHandler}/>}
             {activePage === 'Generate' && <ReportBuilder activePage={activePageHandler} format={format}/>}
-            <button onClick={() =>{loadDataSetReport()}}>Fetch Me Some Data</button>
-            <iframe name="MyFrame"></iframe>
         </div>
     )
 }
