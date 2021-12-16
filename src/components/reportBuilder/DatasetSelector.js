@@ -5,8 +5,6 @@ import { useDataQuery } from '@dhis2/app-runtime'
 
 const DatasetSelector = (props) =>{
 
-    console.log("props: ", props)
-
     const {selected, setSelected, optionstmp, setHighlighted} = props
 
     const [highL, setHighL] = useState([]);
@@ -86,18 +84,23 @@ const DatasetSelector = (props) =>{
 
     ])
 
+    function highlightFunction(){
+
+    }
+
     const betterOption = (props) => {
         const { label, value, onClick, highlighted, selected } = props
         // do something if this highlighted
 
         const customOnClick = (...args) => {
-            onClick(...args)
 
-            if (highlighted) {
-                setHighlighted([label, value])
+            if (!highlighted) {
+                setHighlighted(value)
             }else{
                 setHighlighted([])
             }
+            onClick(...args)
+
         }
         return <TransferOption {...props} onClick={customOnClick} />
     }

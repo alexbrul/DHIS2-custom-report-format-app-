@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Button, Transfer } from '@dhis2/ui'
+import { Button, Transfer, CircularLoader} from '@dhis2/ui'
 import classes from '../styleSheets/reportBuilder.module.css'
 import DatasetSelector from '../components/reportBuilder/DatasetSelector'
 import DatasetPreview from '../components/reportBuilder/DatasetPreview'
@@ -9,9 +9,9 @@ import { useDataQuery } from '@dhis2/app-runtime'
 const ReportBuilder = ({ activePage, format }) => {
 
     //DatasetPicker
+    //const [selectedOrgUnits, setSelectedOrgUnits] = useState([]);
     const initiallySelected = [];
     const [selected, setSelected] = useState(["empty"])
-    const [selectedOrgUnits, setSelectedOrgUnits] = useState([]);
     const [highLighted, setHighlighted] = useState([])
 
 
@@ -33,16 +33,15 @@ const ReportBuilder = ({ activePage, format }) => {
     })
 
 
-    const loadDataSetReport = () => {
-        refetch({ ds: 'mZ7EalOemj2', ou: 'nBLRIqKNNOu', pe: '2020' })
+    const loadDataSetReport = (ds) => {
+        refetch({ ds: ds, ou: 'nBLRIqKNNOu', pe: '2020' })
         if (loading) return <CircularLoader small />
         if (error) return <p>Oops! Something went wrong.</p>
         if (data) { document.MyFrame.document.body.innerHTML = data.dataSetReport }
     }
     useEffect(() => {
-        console.log("Useeefffect")
-        loadDataSetReport()
-        
+        loadDataSetReport(highLighted) 
+        console.log(highLighted);
     }, [highLighted])
 
     return (
@@ -55,7 +54,6 @@ const ReportBuilder = ({ activePage, format }) => {
             </div>
             <div className={classes.mainArea}>
                 <div className={classes.mainAreaLeft}>
-                    {console.log("logging selected: ", selected)}
                     <DatasetSelector selected={selected} setSelected={setSelected} setHighlighted={setHighlighted}
                         initiallySelected={initiallySelected} /> {/* {should be a copy of options} */}
                     {/* {<OrganisationUnitPicker 
@@ -65,8 +63,7 @@ const ReportBuilder = ({ activePage, format }) => {
                 </div>
                 <div className={classes.mainAreaRight}>
                     <DatasetPreview>
-                        <iframe name="MyFrame"></iframe>
-                        <p>testhei</p>
+                        <iframe name="MyFrame" width="100%" height= "500px"></iframe>
                     </DatasetPreview>
                 </div>
             </div>
