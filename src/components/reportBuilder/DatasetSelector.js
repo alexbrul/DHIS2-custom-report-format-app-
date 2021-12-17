@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, componentDidMount } from 'react'
 import { Button, Transfer, TransferOption } from '@dhis2/ui'
 import { useDataQuery } from '@dhis2/app-runtime'
 
 
 const DatasetSelector = (props) =>{
 
-    const {selected, setSelected, optionstmp, setHighlighted} = props
+    const {selected, setSelected, optionstmp, setHighlighted, options} = props
 
     const HEIGHT_SELECTOR = "40vh"
 
@@ -15,73 +15,8 @@ const DatasetSelector = (props) =>{
     }
 
     //has to be passed down later. 
-    const [options, setOptions] = useState([
-        {
-            value: 'XesKc0UNEKj',
-            label: '001 Outpatient Consultation (OPD)'
-        },
-        {    
-            value: 'mZ7EalOemj2',
-            label: '002 Malaria dataset'
-        },
-        {
-            value: 'TsmvMflRNmk',
-            label: '003 Hospitalization'
-        },
-        {
-            value: 'JhTgs34Pl1b',
-            label: '004 Mental Health and NCDs'
-        },
-        {    
-            value: 'aPPHD1VGcpr',
-            label: '005 Gender Based Violence and Abortions'
-        },
-        {    
-            value: 'iynGsJrWbuY',
-            label: '006 Surgery Anasthesia & Rehab & Physiotherapy'
-        }, 
-        {   
-            value: 'jq0USnQckxw',
-            label: '007 Obstetrical Complications and Deliveries'
-        },
-        {
-            value: 'KnGuR0QeJmQ',
-            label: '008 Postnatal , KMC and Neonatal'
-        },
-        {
-            value: 'sqWWN3A2z1p',
-            label: '009 Nutrition and Family Planning'
-        },
-        {
-            value: 'd3r98cmbKi4',
-            label: '010 Laboratory'
-        },
-        {
-            value: 'XArHJTZMZxq',
-            label: '011 Medical Imagery'
-        },
-        {
-            value: 'HIVLAKADGeB',
-            label: '012 Ambulance'
-        },
-        {
-            value: 'X1XOMlrgsFg',
-            label: '013 DH Stock of tracer drugs'
-        },
-        {
-            value: 'UerYwP2Xbme',
-            label: '014 Referral Cervical Cancer Screening and Breast Cancer Early Detection'
-        },
-        {
-            value: 'Eb94c0LrXWN',
-            label: '014 Staffing Information'
-        },
-        {
-            value: 'oKI4cf9hz2E',
-            label: '015 DH_Cervical cancer screening and breast cancer early detection'
-        }
+    let initially = options.map(item => item.label)
 
-    ])
 
 
     const betterOption = (props) => {
@@ -95,6 +30,8 @@ const DatasetSelector = (props) =>{
         }
         return <TransferOption {...props} onClick={customOnClick} />
     }
+
+
 
     return (
         <div>
