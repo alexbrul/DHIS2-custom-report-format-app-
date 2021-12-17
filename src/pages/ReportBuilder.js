@@ -7,7 +7,9 @@ import OrganisationUnitPicker from '../components/reportBuilder/OrganisationUnit
 import { useDataQuery } from '@dhis2/app-runtime'
 import {datasetReportCustomDynamicQuery} from '../API/API.js'
 
-const ReportBuilder = ({ activePage, format }) => {
+const ReportBuilder = (props) => {
+
+    const {activePage, format} = props
 
     //DatasetPicker
     //const [selectedOrgUnits, setSelectedOrgUnits] = useState([]);
@@ -29,11 +31,13 @@ const ReportBuilder = ({ activePage, format }) => {
         if (data) { document.MyFrame.document.body.innerHTML = data.dataSetReport }
 
     }
+    //fetches when new is requested
     useEffect(() => {
         loadDataSetReport(highlighted) 
         console.log("useeffect highlighted: ", highlighted);
     }, [highlighted])
 
+    //updates myframe display after data changes
     useEffect(() => {
         if (data) { document.MyFrame.document.body.innerHTML = data.dataSetReport }
     }, [data])
@@ -54,6 +58,7 @@ const ReportBuilder = ({ activePage, format }) => {
                         selectedOrgUnits={selectedOrgUnits}
                         setSelectedOrgUnits={setSelectedOrgUnits}
                     />} */}
+                    {selected}
                 </div>
                 <div className={classes.mainAreaRight}>
                     <DatasetPreview>
