@@ -14,9 +14,6 @@ const DatasetSelector = (props) =>{
         setSelected(payload.selected); 
     }
 
-    //has to be passed down later. 
-    let initially = options.map(item => item.label)
-
 
 
     const betterOption = (props) => {
