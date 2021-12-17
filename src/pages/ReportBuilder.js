@@ -5,6 +5,7 @@ import DatasetSelector from '../components/reportBuilder/DatasetSelector'
 import DatasetPreview from '../components/reportBuilder/DatasetPreview'
 import OrganisationUnitPicker from '../components/reportBuilder/OrganisationUnitPicker'
 import { useDataQuery } from '@dhis2/app-runtime'
+import {datasetReportCustomDynamicQuery} from '../API/API.js'
 
 const ReportBuilder = ({ activePage, format }) => {
 
@@ -16,19 +17,7 @@ const ReportBuilder = ({ activePage, format }) => {
 
 
 
-    const testQuery = {
-        dataSetReport: {
-            resource: 'dataSetReport/custom',
-            params: ({ ds, pe, ou }) => ({
-                ds: ds,
-                pe: pe,
-                ou: ou,
-                format: 'html'
-            })
-        }
-    }
-
-    const { data, refetch, error, loading } = useDataQuery(testQuery, {
+    const { data, refetch, error, loading } = useDataQuery(datasetReportCustomDynamicQuery, {
         lazy: true,
     })
 
@@ -72,8 +61,6 @@ const ReportBuilder = ({ activePage, format }) => {
                     </DatasetPreview>
                 </div>
             </div>
-
-
         </div>
 
     )

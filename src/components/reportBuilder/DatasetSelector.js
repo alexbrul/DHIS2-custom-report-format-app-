@@ -7,7 +7,6 @@ const DatasetSelector = (props) =>{
 
     const {selected, setSelected, optionstmp, setHighlighted} = props
 
-    const [highL, setHighL] = useState([]);
     const HEIGHT_SELECTOR = "40vh"
 
 
@@ -84,19 +83,15 @@ const DatasetSelector = (props) =>{
 
     ])
 
-    function highlightFunction(){
-
-    }
 
     const betterOption = (props) => {
-        const { label, value, onClick, highlighted, selected } = props
+        const {value, onClick} = props
         // do something if this highlighted
 
         const customOnClick = (...args) => {
             setHighlighted(value)
             onClick(...args)
             
-
         }
         return <TransferOption {...props} onClick={customOnClick} />
     }
