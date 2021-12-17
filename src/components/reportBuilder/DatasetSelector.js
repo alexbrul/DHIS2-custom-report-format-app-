@@ -78,7 +78,7 @@ const DatasetSelector = (props) =>{
         },
         {
             value: 'oKI4cf9hz2E',
-            lable: '015 DH_Cervical cancer screening and breast cancer early detection'
+            label: '015 DH_Cervical cancer screening and breast cancer early detection'
         }
 
     ])

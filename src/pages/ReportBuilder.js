@@ -57,7 +57,7 @@ const ReportBuilder = ({ activePage, format }) => {
                 </div>
                 <div className={classes.mainAreaRight}>
                     <DatasetPreview>
-                        <iframe name="MyFrame" width="100%" height= "500px"></iframe>
+                    {(loading) ? (<CircularLoader small />) : (<iframe name="MyFrame" width="100%" height= "500px"></iframe>)}
                     </DatasetPreview>
                 </div>
             </div>
