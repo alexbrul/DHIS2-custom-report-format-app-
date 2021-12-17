@@ -7,17 +7,20 @@ import OrganisationUnitPicker from '../components/reportBuilder/OrganisationUnit
 import { useDataQuery } from '@dhis2/app-runtime'
 import {datasetReportCustomDynamicQuery} from '../API/API.js'
 
+                    {/* {<OrganisationUnitPicker 
+                        selectedOrgUnits={selectedOrgUnits}
+                        setSelectedOrgUnits={setSelectedOrgUnits}
+                    />} */}
+
 const ReportBuilder = (props) => {
 
-    const {activePage, format} = props
+    const {activePage, format, setDataSets} = props
 
     //DatasetPicker
     //const [selectedOrgUnits, setSelectedOrgUnits] = useState([]);
     const initiallySelected = [];
-    const [selected, setSelected] = useState(["empty"])
+    const [selected, setSelected] = useState([])
     const [highlighted, setHighlighted] = useState([])
-
-
 
     const { data, refetch, error, loading } = useDataQuery(datasetReportCustomDynamicQuery, {
         lazy: true,
@@ -34,7 +37,6 @@ const ReportBuilder = (props) => {
     //fetches when new is requested
     useEffect(() => {
         loadDataSetReport(highlighted) 
-        console.log("useeffect highlighted: ", highlighted);
     }, [highlighted])
 
     //updates myframe display after data changes
@@ -47,18 +49,19 @@ const ReportBuilder = (props) => {
             <div className={classes.topColumn}>
                 <Button onClick={() => { activePage('Home') }}> Back Home</Button>
                 <p>{format}</p>
-                <Button>Generate report</Button>
+                <Button onClick={() => { 
+                    activePage('Print') 
+                    setDataSets(selected)}}> Generate Report
+                </Button>
 
             </div>
             <div className={classes.mainArea}>
                 <div className={classes.mainAreaLeft}>
-                    <DatasetSelector selected={selected} setSelected={setSelected} setHighlighted={setHighlighted}
-                        initiallySelected={initiallySelected} /> {/* {should be a copy of options} */}
-                    {/* {<OrganisationUnitPicker 
-                        selectedOrgUnits={selectedOrgUnits}
-                        setSelectedOrgUnits={setSelectedOrgUnits}
-                    />} */}
-                    {selected}
+                    <DatasetSelector 
+                        selected={selected} 
+                        setSelected={setSelected} 
+                        setHighlighted={setHighlighted}
+                        initiallySelected={initiallySelected}/> {/* {should be a copy of options} */}
                 </div>
                 <div className={classes.mainAreaRight}>
                     <DatasetPreview>

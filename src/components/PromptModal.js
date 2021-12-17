@@ -16,7 +16,6 @@ const PromptModal = ({target, openPage}) =>{
             setDisplayState({formatOne: 'black', formatTwo: 'black', formatThree: '#4db6ac'})
         }
         setFormatToggle(key)
-        console.log(key);
     }
 
     const StandardModal = (action) =>{
@@ -60,7 +59,6 @@ const PromptModal = ({target, openPage}) =>{
                 <div></div>
                 <Button primary onClick ={()=>{
                     openPage(target, formatToggle)
-                    console.log(target, formatToggle);
                 }}>{target}</Button>
             </div>
         </Modal>

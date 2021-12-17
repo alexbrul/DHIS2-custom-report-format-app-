@@ -4,38 +4,26 @@ import { CircularLoader } from '@dhis2/ui'
 import classes from './App.module.css'
 import Home from './pages/Home.js'
 import ReportBuilder from './pages/ReportBuilder'
-
-const testQuery = {
-    dataSetReport: {
-        resource: 'dataSetReport/custom',
-        params: ({ ds, pe, ou}) => ({
-            ds: ds,
-            pe: pe,
-            ou: ou,
-            format: 'html'
-        })
-    }
-}
+import PrintReport from './pages/PrintReport'
 
 function MyApp() {
 
 
     //Always start with homepage. 
     const [activePage, setActivePage] = useState("Home")
-    const [format, setFormat] = useState()
+    const [format, setFormat] = useState("Format One")
+    const [dataSets, setDataSets] = useState([])
 
-    function activePageHandler(page, format){
+    function activePageHandler(page){
         setActivePage(page);
-        if(format === 'f1'){
-            setFormat('Format 1')
-        }
     }
 
     return (
         <div className={classes.container}>
             {activePage === 'Home' && <Home activePage={activePageHandler}/>}
             {activePage === 'Edit' && <Home activePage={activePageHandler}/>}
-            {activePage === 'Generate' && <ReportBuilder activePage={activePageHandler} format={format}/>}
+            {activePage === 'Generate' && <ReportBuilder activePage={activePageHandler} format={format} setDataSets={setDataSets}/>}
+            {activePage === 'Print' && <PrintReport activePage={activePageHandler} dataSets={dataSets}/>}
         </div>
     )
 }

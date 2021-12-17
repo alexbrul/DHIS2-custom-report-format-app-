@@ -1,5 +1,3 @@
-
-
 export const datasetReportCustomDynamicQuery = {
     dataSetReport: {
         resource: 'dataSetReport/custom',
