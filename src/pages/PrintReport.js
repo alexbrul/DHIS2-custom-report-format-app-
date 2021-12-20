@@ -1,77 +1,87 @@
 import { Button, CircularLoader } from '@dhis2/ui'
 import { useDataQuery } from '@dhis2/app-runtime'
-import {datasetReportCustomDynamicQuery} from '../API/API.js'
+import { datasetReportCustomDynamicQuery } from '../API/API.js'
 import React, { useState, useEffect } from 'react'
+import DatasetPreview from '../components/reportBuilder/DatasetPreview'
 
-const PrintReport = (props) =>{
-    const {activePage, dataSets} = props
+const PrintReport = (props) => {
+    const { activePage, dataSets } = props
     const { data, refetch, error, loading } = useDataQuery(datasetReportCustomDynamicQuery, {
         lazy: true,
     })
+    const [output, setOutput] = useState("");
+
     const [counter, setCounter] = useState(0);
 
     const addCount = () => {
-        setCounter(count+1)
+        console.log("adding count")
+        setCounter(counter + 1)
     }
 
     const count = dataSets.length
-    console.log("count datasets: ", count)
-    console.log("datasets start:", dataSets)
-    
+
+
 
 
     const dataSetsArray = []
 
     useEffect(() => {
-        if (data) { 
+        if (data) {
             dataSetsArray.push(data.dataSetReport)
-            fetchReport(dataSets)
+            console.log("inside useEffect triggered by data change")
             addCount()
-            console.log("counter: ", counter, )
-            
+
+        }
+        console.log("counter: ", counter, " count: ", count)
+        if (counter == count && data) {
+            dataSetsArray.map(item => {
+                console.log("item : ", item)
+                document.MyFrame.document.body.innerHTML += item + "-----------------------" + "<br/>" + "<br/>" + "<br/>"
+            })
+        } else {
+            fetchReport(dataSets)
         }
     }, [data])
 
-    useEffect(() => {
-        console.log("adding report")
-        if(counter==count){
-            document.MyFrame.document.body.innerHTML = data.dataSetReport;
-        }
-    }, [counter])
+
 
 
     const fetchReport = (args) => {
-        
-       console.log("datasets print:", dataSets)
 
+        console.log("Fetching report, count= ", count, " Counter = ", counter)
 
-        console.log(dataSetsArray.length);
-
-        if(counter<count){
+        if (counter < count) {
             refetch({ ds: dataSets[counter], ou: 'nBLRIqKNNOu', pe: '2020' })
 
         }
-        
-        if(counter==count){
+
+        if (counter == count) {
             console.log("Fetching finished")
-            dataSetsArray.map(item =>{
-                document.MyFrame.document.body.innerHTML += item + "-----------------------" + "<br/>" + "<br/>" + "<br/>"
-            })
+            console.log("Dataset library")
+
         }
     }
 
 
 
-    
+
     return (
         <div>
-            <Button onClick={() => {activePage('Generate')}}> Back to Builder</Button>
+            <Button onClick={() => { activePage('Generate') }}> Back to Builder</Button>
             <h1>This is The Report Printer</h1>
             <button onClick={() => {
-                {console.log("datasetsbutton: ", dataSets)}
+                { console.log("datasetsbutton: ", dataSets) }
                 fetchReport(dataSets)
             }}> Build The Report</button>
-            <iframe name="MyFrame" width="100%" height= "500px"></iframe>)
+            <DatasetPreview>
+                {(counter==count) && <p>testalex</p>}
+                <p>test</p>
+                {(counter==count) && <iframe name="MyFrame" width="100%" height="500px"></iframe>}
+                <Button onClick={() =>  setCounter(0)}> setCounter 0</Button>
+                <Button onClick={() => console.log(counter)}> log counter</Button>
+
+                </DatasetPreview>
+
 
         </div>
     )
