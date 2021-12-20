@@ -20,9 +20,6 @@ const PrintReport = (props) => {
 
     const count = dataSets.length
 
-
-
-
     const dataSetsArray = []
 
     useEffect(() => {
@@ -30,6 +27,7 @@ const PrintReport = (props) => {
             dataSetsArray.push(data.dataSetReport)
             console.log("inside useEffect triggered by data change")
             addCount()
+            console.log("dataset array", dataSetsArray)
 
         }
         console.log("counter: ", counter, " count: ", count)
