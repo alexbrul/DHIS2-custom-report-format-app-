@@ -121,7 +121,6 @@ const ReportBuilder = (props) => {
                     activePage('Print') 
                     setDataSets(selected)}}> Generate Report
                 </Button>
-
             </div>
             <div className={classes.mainArea}>
                 <div className={classes.mainAreaLeft}>
