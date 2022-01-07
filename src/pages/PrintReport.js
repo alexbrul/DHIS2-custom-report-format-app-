@@ -4,6 +4,7 @@ import { datasetReportCustomDynamicQuery } from '../API/API.js'
 import React, { useState, useEffect } from 'react'
 import DatasetPreview from '../components/reportBuilder/DatasetPreview'
 import classes from '../styleSheets/reportBuilder.module.css'
+import PrintPage from '../components/printing/PrintPage.js'
 
 const PrintReport = (props) => {
     const { activePage, dataSets } = props
@@ -43,15 +44,6 @@ const PrintReport = (props) => {
         if (counter < count) {
             refetch({ ds: dataSets[counter], ou: 'nBLRIqKNNOu', pe: '2020' })
         }
-
-        if (counter == count) {
-            if ((counter >= count)) {
-                dataSetsArray.map(item => {
-                    document.MyFrame.document.body.innerHTML += item + "-----------------------" + "<br/>" + "<br/>" + "<br/>"
-                })
-            }
-
-        }
     }
 
 
@@ -64,9 +56,9 @@ const PrintReport = (props) => {
                 <p>Report Printer</p>
                 <Button onClick={() => { activePage('Generate') }}> Print Report</Button>
             </div>
-            <DatasetPreview>
-                {(counter==count) && <iframe name="MyFrame" width="100%" height="500px"></iframe>}
-            </DatasetPreview>
+            {(counter!=count) && <CircularLoader/>} 
+            {(counter==count) && <PrintPage htmlArray={dataSetsArray}/>}
+            
         </div>
     )
 }
