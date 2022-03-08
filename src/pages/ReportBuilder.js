@@ -7,10 +7,14 @@ import OrganisationUnitPicker from '../components/reportBuilder/OrganisationUnit
 import { useDataQuery } from '@dhis2/app-runtime'
 import {datasetReportCustomDynamicQuery} from '../API/API.js'
 
+   {/* Should rewrite everything and use async/await. This is spagetti and over engineered */}
+
+
                     {/* {<OrganisationUnitPicker 
                         selectedOrgUnits={selectedOrgUnits}
                         setSelectedOrgUnits={setSelectedOrgUnits}
                     />} */}
+
 
 const ReportBuilder = (props) => {
 
